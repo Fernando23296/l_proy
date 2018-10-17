@@ -1,0 +1,14 @@
+OPEN CV
+- https://www.learnopencv.com/filling-holes-in-an-image-using-opencv-python-c/
+- https://hetpro-store.com/TUTORIALES/opencv-findcontours/
+- https://docs.opencv.org/3.4/df/d0d/tutorial_find_contours.html
+- http://opencvexamples.blogspot.com/2013/09/find-contour.html
+- https://docs.opencv.org/2.4/modules/imgproc/doc/structural_analysis_and_shape_descriptors.html?highlight=findcontours#findcontours
+- https://docs.opencv.org/3.3.1/d4/d73/tutorial_py_contours_begin.html
+- https://www.learnopencv.com/find-center-of-blob-centroid-using-opencv-cpp-python/
+
+
+PYTHON
+
+
+TEORIA
