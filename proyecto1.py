@@ -3,7 +3,7 @@ import imutils
 import cv2
 
 #FUNCIONA PERO LAS COORDENADAS SALEN DEL CORTE
-img = cv2.imread('prueba2.png', cv2.IMREAD_COLOR)
+img = cv2.imread('prueba4.png', cv2.IMREAD_COLOR)
 dimensions = img.shape
 
 # height, width, number of channels in image
