@@ -2,14 +2,15 @@ import numpy as np
 import imutils
 import cv2
 
-img = cv2.imread('prueba2.png', cv2.IMREAD_COLOR)
+#FUNCIONA PERO LAS COORDENADAS SALEN DEL CORTE
+img = cv2.imread('esc_erosion.png', cv2.IMREAD_COLOR)
 dimensions = img.shape
 
 # height, width, number of channels in image
 altura = img.shape[0]
 width = img.shape[1]
 ancho = int(width)
-alfa = int(altura/4)
+alfa = int(altura/12)
 print(alfa)
 cons = 0
 for i in range(1, 100):
@@ -45,7 +46,7 @@ for i in range(1, 100):
         #CIRCULO DE CENTRO
         cv2.circle(image, (cX, cY), 7, (0, 0, 255), -1)
         #COORDENADAS
-        cv2.putText(image, xx, (cX - 50, cY - 50),
+        cv2.putText(image, xx, (cX - 20, cY - 20),
                     #TIPO DE LETRA, COLOR?
                     cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
 
