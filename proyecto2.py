@@ -1,25 +1,30 @@
 import numpy as np
 import imutils
 import cv2
+from matplotlib import pyplot as plt
 
-#FUNCIONA PERO LAS COORDENADAS SALEN DEL CORTE
-img = cv2.imread('diag6_erosion.png', cv2.IMREAD_COLOR)
+imag = cv2.imread('diag2.jpg')
+
+kernel = np.ones((5, 5), np.uint8)
+gray = cv2.cvtColor(imag, cv2.COLOR_BGR2GRAY)
+blurred = cv2.GaussianBlur(gray, (5, 5), 0)
+erosion = cv2.erode(blurred, kernel, iterations=2)
+
+
+
+img = erosion
 dimensions = img.shape
 
 # height, width, number of channels in image
 altura = img.shape[0]
 width = img.shape[1]
+print("Altura: ", altura)
+print("Ancho: ", width)
 ancho = int(width)
-print("Ancho: ")
-print(ancho)
-qua = int(ancho/22)
-print("Ancho qua:")
-print(qua)
-qua2=qua*8
-alfa = int(altura/12)
+alfa = int(altura/4)
 print(alfa)
 cons = 0
-for i in range(1, 10000):
+for i in range(1, 1000):
 
     cons1 = cons
     cons2 = cons1+alfa
@@ -46,27 +51,22 @@ for i in range(1, 10000):
         cY = int(M["m01"] / M["m00"])
         #print(cX)
         #print(cY)
-        if (cY<qua):
-            pass
-        else:
-            xx = str(cX)+","+str(cY)
-        
+        xx = str(cX)+","+str(cY)
         #CONTORNO ENCONTRADO
-            cv2.drawContours(image, [c], -1, (0, 0, 255), 2)
+        cv2.drawContours(image, [c], -1, (0, 0, 255), 2)
         #CIRCULO DE CENTRO
-            cv2.circle(image, (cX, cY), 7, (0, 0, 255), -1)
+        cv2.circle(image, (cX, cY), 7, (0, 0, 255), -1)
         #COORDENADAS
-            cv2.putText(image, xx, (cX - 20, cY - 20),
+        cv2.putText(image, xx, (cX - 50, cY - 50),
                     #TIPO DE LETRA, COLOR?
                     cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
-        
-            print(xx)
+
         #cv2.imshow("Image", image)
         #imagen=image
         #img[0:100,0:490]=imagen
-            cv2.imshow("Image", img)
-            count = count+1
-            cv2.waitKey(0)
-            cons = cons2
+        cv2.imshow("Image", img)
+        count = count+1
+        cv2.waitKey(0)
+    cons = cons2
     i = i+1
 #python center_blob1.py --image prueba1.png

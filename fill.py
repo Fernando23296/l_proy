@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-img = cv2.imread("esc_morpho.png")
+img = cv2.imread("ex1_erosion.png")
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 h, w = img.shape[:2]

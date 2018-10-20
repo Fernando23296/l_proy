@@ -4,7 +4,7 @@ import numpy as np
 
 def erodeDilate(imagePath):
     # Read the input image
-    frame = cv2.imread('diag6.png')
+    frame = cv2.imread('ejem_sobelx.png')
 
     # kernel is used to control the amount of eroding and dilating
     kernel = np.ones((5, 5), np.uint8)

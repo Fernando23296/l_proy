@@ -1,7 +1,7 @@
 
 import cv2
 
-img = cv2.imread('ex8_erosion.png', cv2.IMREAD_UNCHANGED)
+img = cv2.imread('diag3_erosion.png', cv2.IMREAD_UNCHANGED)
 
 print('Original Dimensions : ', img.shape)
 

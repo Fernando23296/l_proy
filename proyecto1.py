@@ -3,17 +3,19 @@ import imutils
 import cv2
 
 #FUNCIONA PERO LAS COORDENADAS SALEN DEL CORTE
-img = cv2.imread('esc_erosion.png', cv2.IMREAD_COLOR)
+img = cv2.imread('diag4.png', cv2.IMREAD_COLOR)
 dimensions = img.shape
 
 # height, width, number of channels in image
 altura = img.shape[0]
 width = img.shape[1]
+print("Altura: ",altura)
+print("Ancho: ", width)
 ancho=int(width)
 alfa=int(altura/4)
 print(alfa)
 cons=0
-for i in range(1,100):
+for i in range(1,1000):
     
     cons1=cons
     cons2=cons1+alfa
