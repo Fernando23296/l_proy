@@ -7,7 +7,7 @@ FILLING AN IMAGE OF:
 - GAUSSIAN BLUR
 - CANNY
 - PREWITT
-
+- SKELETONIZE
 '''
 
 import scipy.ndimage.morphology as morp
