@@ -1,3 +1,4 @@
+# FILE FOR ILLUMINATE ANOTHER IMAGE
 import cv2
 import numpy as np
 

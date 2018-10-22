@@ -1,6 +1,6 @@
 import cv2
 
-img = cv2.imread('diag3_erosion.png')
+img = cv2.imread('re_esq.png')
 
 # Get original size of image
 print('Original Dimensions: ', img.shape)

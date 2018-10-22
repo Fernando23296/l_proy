@@ -1,3 +1,6 @@
+'''
+Blur an image
+'''
 import numpy as np
 import skimage
 from skimage import data, io, filters
@@ -9,9 +12,6 @@ image = cv2.imread('ex.png')
 def imshow(image):
     io.imshow(image)
     io.show()
-
-
-
 
 def blur(image, x0, x1, y0, y1, sigma=1, imshowall=False):
     x0, x1 = min(x0, x1), max(x0, x1)

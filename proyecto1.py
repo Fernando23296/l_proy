@@ -3,24 +3,24 @@ import imutils
 import cv2
 
 #FUNCIONA PERO LAS COORDENADAS SALEN DEL CORTE
-img = cv2.imread('diag4.png', cv2.IMREAD_COLOR)
+img = cv2.imread('ejemx.png', cv2.IMREAD_COLOR)
 dimensions = img.shape
 
 # height, width, number of channels in image
 altura = img.shape[0]
 width = img.shape[1]
-print("Altura: ",altura)
-print("Ancho: ", width)
+#print("Altura: ",altura)
+#print("Ancho: ", width)
 ancho=int(width)
 alfa=int(altura/4)
-print(alfa)
+#print(alfa)
 cons=0
 for i in range(1,1000):
     
     cons1=cons
     cons2=cons1+alfa
-    print(cons1)
-    print(cons2)
+    #print(cons1)
+    #print(cons2)
     print("____")
     image = img[cons1:cons2, 0:ancho]
     
@@ -39,8 +39,12 @@ for i in range(1,1000):
     count=1
     for c in cnts:
         M = cv2.moments(c)
-        cX = int(M["m10"] / M["m00"])
-        cY = int(M["m01"] / M["m00"])
+        
+        if M["m00"] != 0:
+            cX = int(M["m10"] / M["m00"])
+            cY = int(M["m01"] / M["m00"])
+        else:
+            cX, cY = 0, 0
         #print(cX)
         #print(cY)
         xx=str(cX)+","+str(cY)
