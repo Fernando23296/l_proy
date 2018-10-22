@@ -53,7 +53,7 @@ def skeletonize(img):
     return img
 
 
-img = cv2.imread('auto.jpeg')
+img = cv2.imread('ex4.jpg')
 dimensions = img.shape
 
 # height, width, number of channels in image
@@ -74,7 +74,7 @@ erosion = cv2.erode(gray, kernel, iterations=2)
 #thresh = cv2.threshold(gray, 180, 46, cv2.THRESH_BINARY)[1]
 #prometedor para ex5.jpg y ex1.jpg
 #thresh = cv2.threshold(gray, 150, 200, cv2.THRESH_BINARY)[1]
-thresh = cv2.threshold(gray, 146, 196, cv2.THRESH_BINARY)[1]
+thresh = cv2.threshold(gray, 180, 46, cv2.THRESH_BINARY)[1]
 img_gaussian = cv2.GaussianBlur(thresh, (3, 3), 0)
 img = cv2.Canny(img_gaussian, 50, 200)
 kernelx = np.array([[1, 1, 1], [0, 0, 0], [-1, -1, -1]])
@@ -87,7 +87,7 @@ img = img_prewittx + img_prewitty
 
 ret, img = cv2.threshold(img, 172, 255, 0)
 skel = skeletonize(img)
-#cv2.imwrite('skel.png', skel.astype(np.uint8)*255)
-cv2.imshow("skel", skel.astype(np.uint8)*255)
+cv2.imwrite('.png', skel.astype(np.uint8)*255)
+#cv2.imshow("skel", skel.astype(np.uint8)*255)
 
-cv2.waitKey(0)
+#cv2.waitKey(0)

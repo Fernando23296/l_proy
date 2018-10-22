@@ -52,7 +52,7 @@ def skeletonize(img):
     return img
 
 
-img = cv2.imread('ex4.png')
+img = cv2.imread('ex4.jpg')
 dimensions = img.shape
 
 # height, width, number of channels in image
@@ -78,7 +78,7 @@ img = cv2.Canny(img_gaussian, 50, 200)
 
 ret, img = cv2.threshold(img, 172, 255, 0)
 skel = skeletonize(img)
-cv2.imwrite('pro.png', skel.astype(np.uint8)*255)
+cv2.imwrite('ex4_ppc.png', skel.astype(np.uint8)*255)
 cv2.imshow("skel", skel.astype(np.uint8)*255)
 
 cv2.waitKey(0)

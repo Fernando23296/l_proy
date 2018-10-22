@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 
-img = cv2.imread('ex2.jpg')
+img = cv2.imread('ex4.jpg')
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 #parece buena opcion
 #thresh = cv2.threshold(gray, 150, 200, cv2.THRESH_BINARY)[1]
