@@ -12,7 +12,7 @@ width = img.shape[1]
 #print("Altura: ",altura)
 #print("Ancho: ", width)
 ancho=int(width)
-alfa=int(altura/4)
+alfa=int(altura/12)
 #print(alfa)
 cons=0
 for i in range(1,1000):

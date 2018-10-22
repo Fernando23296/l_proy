@@ -7,8 +7,22 @@ OPEN CV
 - https://docs.opencv.org/3.3.1/d4/d73/tutorial_py_contours_begin.html
 - https://www.learnopencv.com/find-center-of-blob-centroid-using-opencv-cpp-python/
 
+- THRESHOLD OPERATION: http://opencvexamples.blogspot.com/2013/09/code-for-threshold.html
+- Linear Filters and Image Processing: https://web.eecs.umich.edu/~jjcorso/t/598F14/files/lecture_0924_filtering.pdf
+- IMAGE EDGE DETECTION : SOBEL AND LAPLACIAN: https://www.bogotobogo.com/python/OpenCV_Python/python_opencv3_Image_Gradient_Sobel_Laplacian_Derivatives_Edge_Detection.php
+- Detector de bordes Canny cómo contar objetos con OpenCV y Python: https://programarfacil.com/blog/vision-artificial/detector-de-bordes-canny-opencv/
+- Scoliosis DATASET: https://radiopaedia.org/cases/scoliosis-7
+- X-ray vertebrae detection: http://answers.opencv.org/question/23459/x-ray-vertebrae-detection/
 
 PYTHON
+- Blurring a part of an image in Python: https://github.com/Naereen/notebooks/blob/91732d5c046aa8f62bd995f1ca6d25c0b9c4f2a7/Blurring_a_part_of_an_image_in_Python.ipynb
+- KMEANS https://jakevdp.github.io/PythonDataScienceHandbook/05.11-k-means.html
+- KMEANS https://www.unioviedo.es/compnum/laboratorios_py/kmeans/kmeans.html
+- Clustering With K-Means in Python: https://datasciencelab.wordpress.com/2013/12/12/clustering-with-k-means-in-python/
+- Algoritmo K-means: Aprenda esta Técnica Esencial a través de Ejemplos Paso a paso con Python: http://minerandodados.com.br/index.php/2018/02/02/algoritmo-k-means-python-passo-passo/
 
 
 TEORIA
+- Method to extract an enhanced cervical vertebrae area from a digital X-ray image: https://www.sciencedirect.com/science/article/pii/S2215016118300979
+- FILTERS: https://www.bioss.ac.uk/people/chris/ch3.pdf
+- Skeletonization/Medial Axis Transform: http://homepages.inf.ed.ac.uk/rbf/HIPR2/skeleton.htm
