@@ -48,6 +48,7 @@ for i in range(1,1000):
         #print(cX)
         #print(cY)
         xx=str(cX)+","+str(cY)
+        print(xx)
         #CONTORNO ENCONTRADO
         cv2.drawContours(image, [c], -1, (0, 0, 255), 2)
         #CIRCULO DE CENTRO
