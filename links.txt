@@ -20,7 +20,7 @@ PYTHON
 - KMEANS https://www.unioviedo.es/compnum/laboratorios_py/kmeans/kmeans.html
 - Clustering With K-Means in Python: https://datasciencelab.wordpress.com/2013/12/12/clustering-with-k-means-in-python/
 - Algoritmo K-means: Aprenda esta Técnica Esencial a través de Ejemplos Paso a paso con Python: http://minerandodados.com.br/index.php/2018/02/02/algoritmo-k-means-python-passo-passo/
-
+- Creating and Plotting Cubic Splines in Python :https://www.analytics-link.com/single-post/2018/08/17/Creating-and-Plotting-Cubic-Splines-in-Python
 
 TEORIA
 - Method to extract an enhanced cervical vertebrae area from a digital X-ray image: https://www.sciencedirect.com/science/article/pii/S2215016118300979

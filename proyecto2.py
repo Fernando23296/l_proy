@@ -3,7 +3,7 @@ import imutils
 import cv2
 
 #FUNCIONA PERO LAS COORDENADAS SALEN DEL CORTE
-img = cv2.imread('ex4_ppp.png', cv2.IMREAD_COLOR)
+img = cv2.imread('ex_ppp.png', cv2.IMREAD_COLOR)
 dimensions = img.shape
 
 # height, width, number of channels in image
@@ -74,9 +74,9 @@ for i in range(1, 13):
             #cv2.imshow("Image", image)
             #imagen=image
             #img[0:100,0:490]=imagen
-            cv2.imshow("Image", img)
+            #cv2.imshow("Image", img)
             count = count+1
-            cv2.waitKey(0)
+            #cv2.waitKey(0)
             
         cons = cons2
         i = i+1
@@ -85,3 +85,5 @@ for i in range(1, 13):
         pass
 #print(a)
 #python center_blob1.py --image prueba1.png
+cv2.imshow("Image", img)
+cv2.waitKey(0)

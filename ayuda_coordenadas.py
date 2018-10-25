@@ -5,10 +5,12 @@ from matplotlib import pyplot as plt
 from operator import is_not
 from functools import partial
 from pylab import *
+from scipy import interpolate
+from random import *
 
 
 #FUNCIONA PERO LAS COORDENADAS SALEN DEL CORTE
-img = cv2.imread('ex_ppp.png', cv2.IMREAD_COLOR)
+img = cv2.imread('ex2_ppp.png', cv2.IMREAD_COLOR)
 dimensions = img.shape
 
 # height, width, number of channels in image
@@ -18,6 +20,7 @@ print(width)
 #print("Altura: ",altura)
 #print("Ancho: ", width)
 ancho = int(width)
+altura2=int(altura)
 alfa = int(altura/12)
 #print(alfa)
 cons = 0
@@ -196,28 +199,70 @@ _12 = _10.tolist()
 _12 = np.asarray(_12)
 
 x, y = _8.T
+print(_1)
+print(_2)
+print(_3)
+print(_4)
+print(_5)
+print(_6)
+print(_7)
 print(_8)
-plt.plot(x, y, 'bo')
-plt.show()
+print(_9)
+print(_10)
+print(_11)
+print(_12)
 
-
-'''
-_1=a[1][:]
-_1 = _1[_1 != np.array(None)]
-
-print (_1[1][:])
-print (_1[1][2])
-
-aa = a[9][:]
-
-print(a)
-b = aa[aa != np.array(None)]
-bb = b.tolist()
-print(bb)
-bb = np.asarray(bb)
-x, y = bb.T
-#plt.plot(x, y)
+print(altura2)
+print(ancho)
+#plt.plot(x, y, 'bo')
 #plt.show()
-plt.plot(x, y, 'bo')
-plt.show()
+
+'''CAMBIAR A TUPLA
+print(_12)
+_12 = np.array(_12.T)
+print(_12)
+t=()
+for i in range(0,3):
+    t=t+(_12[0][i],)
+print(t)
+
+tt = ()
+for i in range(0, 3):
+    tt = tt+(_12[1][i],)
+print(tt)
 '''
+
+
+ax = np.zeros(shape=(13,1),dtype=object)
+contador=0
+for e in range(1, 13):
+    ax[e][0]=b[e][randint(0, 10)]
+cero=[0,0]
+print(ax)
+print("__"*5)
+#ax = [[cero if x is None else x for x in c] for c in ax]
+ax = ax[ax != np.array(None)]
+ax = ax.tolist()
+print(ax)
+
+'''
+LO IDEAL
+'''
+axx = [[253, 212], [338, 247], [242, 347], [226, 417], [247, 513], 
+    [245, 552], [260, 640], [209, 725], [366, 809], [311, 905], [232, 958]]
+axx = np.asarray(axx)
+print(axx)
+
+axx = np.array(axx.T)
+tck, u = interpolate.splprep(axx, s=0)
+unew = np.arange(0, 1.01, 0.01)
+out = interpolate.splev(unew, tck)
+
+plt.xlim(0, ancho)
+plt.ylim(0, altura2)
+plt.xlabel('X Axis limit is (0,7)')
+plt.ylabel('Y Axis limit is (-0.5,4)')
+plt.plot(out[0], out[1], color='orange')
+plt.plot(axx[0, :], axx[1, :], 'ob')
+plt.show()
+
