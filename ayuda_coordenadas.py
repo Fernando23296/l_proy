@@ -106,12 +106,15 @@ for i in range(1, 13):
 
 cero=[0,0]
 b = [[cero if x is None else x for x in c] for c in a]
-
-print(alfa)
-print(b[12][:])
+print("+++"*10)
+print(b[1])
+b = b[::-1]
+print("+++"*10)
+print(b[11])
+print("+++"*10)
 print("*"*10)
 contador=1
-for i in range(1,13):
+for i in range(2,13):
     for ii in range(0,50):
         b[i][ii][1]+=alfa*contador
     contador=contador+1
@@ -123,9 +126,9 @@ for u in range(1,13):
         else:
             pass
 
-print(b[12][:])
+print("esto es la fila x:", b[12][:])
 print("*"*10)
-
+'''
 _1 = b[1][:]
 _1 = np.asarray(_1)
 _1 = _1[_1 != np.array(None)]
@@ -211,9 +214,9 @@ print(_9)
 print(_10)
 print(_11)
 print(_12)
-
-print(altura2)
-print(ancho)
+'''
+print("altura",altura2)
+print("ancho",ancho)
 #plt.plot(x, y, 'bo')
 #plt.show()
 
@@ -242,27 +245,49 @@ print(ax)
 print("__"*5)
 #ax = [[cero if x is None else x for x in c] for c in ax]
 ax = ax[ax != np.array(None)]
+
 ax = ax.tolist()
 print(ax)
+ax.remove(0)
+
+ancho2=int(ancho/2)
+axx = np.asarray(ax)
+bx = np.array([[ancho2, altura2]])
+cx= np.concatenate((axx, bx), axis=0)
+dx = np.array([[ancho2, 0]])
+axx = np.concatenate((dx, cx), axis=0)
+
+print("luego es", type(axx))
 
 '''
 LO IDEAL
-'''
+
 axx = [[253, 212], [338, 247], [242, 347], [226, 417], [247, 513], 
     [245, 552], [260, 640], [209, 725], [366, 809], [311, 905], [232, 958]]
+print("primero es",type(axx))
 axx = np.asarray(axx)
-print(axx)
+print("luego es",type(axx))
+'''
 
+print(axx)
 axx = np.array(axx.T)
+
+
 tck, u = interpolate.splprep(axx, s=0)
 unew = np.arange(0, 1.01, 0.01)
 out = interpolate.splev(unew, tck)
-
-plt.xlim(0, ancho)
+print(type(axx))
+print(axx)
+'''plt.xlim(0, ancho)
 plt.ylim(0, altura2)
 plt.xlabel('X Axis limit is (0,7)')
-plt.ylabel('Y Axis limit is (-0.5,4)')
+plt.ylabel('Y Axis limit is (-0.5,4)')'''
+img = plt.imread("ex2.jpg")
+fig, ax = plt.subplots()
+ax.imshow(img)
+
 plt.plot(out[0], out[1], color='orange')
 plt.plot(axx[0, :], axx[1, :], 'ob')
+
 plt.show()
 

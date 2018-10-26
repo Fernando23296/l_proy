@@ -6,11 +6,11 @@ from operator import is_not
 from functools import partial
 from pylab import *
 from scipy import interpolate
-
+from random import *
 
 
 #FUNCIONA PERO LAS COORDENADAS SALEN DEL CORTE
-img = cv2.imread('ex_ppp.png', cv2.IMREAD_COLOR)
+img = cv2.imread('ex2_ppp.png', cv2.IMREAD_COLOR)
 dimensions = img.shape
 
 # height, width, number of channels in image
@@ -20,7 +20,7 @@ print(width)
 #print("Altura: ",altura)
 #print("Ancho: ", width)
 ancho = int(width)
-altura2=int(altura)
+altura2 = int(altura)
 alfa = int(altura/12)
 #print(alfa)
 cons = 0
@@ -59,23 +59,11 @@ for i in range(1, 13):
         else:
                 cX, cY = 0, 0
         xx = str(cX)+","+str(cY)
-        '''
-        y = (cX,cY)
-        yy = np.asarray(y)
-        print(y)
-        print(i)
-        a[i][count]=np.append(np.int_([cX, cY]))
-        '''
+        
         print(i)
         #a[i][count] = np.array([cX,cY])
         a[i][count] = [cX, cY]
-        '''
-        numpy.array([1.2, "abc"], dtype=object)
-        a[i][count] = np.array([cX, cY], dtype=object)
-        beta = np.array([cY])
-        a[i][count] = np.append(a[i][count], beta)
-        print(type(xx))
-        '''
+        
 
         print(xx)
         #print(c)
@@ -104,136 +92,71 @@ for i in range(1, 13):
     cons = cons2
     i = i+1
 
-cero=[0,0]
+cero = [0, 0]
 b = [[cero if x is None else x for x in c] for c in a]
 
-print(alfa)
-print(b[12][:])
-print("*"*10)
-contador=1
-for i in range(1,13):
-    for ii in range(0,50):
-        b[i][ii][1]+=alfa*contador
-    contador=contador+1
+b = b[::-1]
 
-for u in range(1,13):
-    for uu in range(0,50):
-        if (b[u][uu][0]==0):
+contador = 1
+for i in range(2, 13):
+    for ii in range(0, 50):
+        b[i][ii][1] += alfa*contador
+    contador = contador+1
+
+for u in range(1, 13):
+    for uu in range(0, 50):
+        if (b[u][uu][0] == 0):
             b[u][uu] = None
         else:
             pass
 
-print(b[12][:])
+print("esto es la fila x:", b[12][:])
 print("*"*10)
 
-_1 = b[1][:]
-_1 = np.asarray(_1)
-_1 = _1[_1 != np.array(None)]
-_1 = _1.tolist()
-_1 = np.asarray(_1)
+print("altura", altura2)
+print("ancho", ancho)
 
-_2 = b[2][:]
-_2 = np.asarray(_2)
-_2 = _2[_2 != np.array(None)]
-_2 = _2.tolist()
-_2 = np.asarray(_2)
+ax = np.zeros(shape=(13, 1), dtype=object)
+contador = 0
+for e in range(1, 13):
+    ax[e][0] = b[e][randint(0, 10)]
+cero = [0, 0]
+print(ax)
+print("__"*5)
+#ax = [[cero if x is None else x for x in c] for c in ax]
+ax = ax[ax != np.array(None)]
 
-_3 = b[3][:]
-_3 = np.asarray(_3)
-_3 = _3[_3 != np.array(None)]
-_3 = _3.tolist()
-_3 = np.asarray(_3)
+ax = ax.tolist()
+print(ax)
+ax.remove(0)
 
-_4 = b[4][:]
-_4 = np.asarray(_4)
-_4 = _4[_4 != np.array(None)]
-_4 = _4.tolist()
-_4 = np.asarray(_4)
+ancho2 = int(ancho/2)
+axx = np.asarray(ax)
+bx = np.array([[ancho2, altura2]])
+cx = np.concatenate((axx, bx), axis=0)
+dx = np.array([[ancho2, 0]])
+axx = np.concatenate((dx, cx), axis=0)
 
-_5 = b[5][:]
-_5 = np.asarray(_5)
-_5 = _5[_5 != np.array(None)]
-_5 = _5.tolist()
-_5 = np.asarray(_5)
+print("luego es", type(axx))
 
-_6 = b[6][:]
-_6 = np.asarray(_6)
-_6 = _6[_6 != np.array(None)]
-_6 = _6.tolist()
-_6 = np.asarray(_6)
+print(axx)
+axx = np.array(axx.T)
 
-_7 = b[7][:]
-_7 = np.asarray(_7)
-_7 = _7[_7 != np.array(None)]
-_7 = _7.tolist()
-_7 = np.asarray(_7)
 
-_8 = b[8][:]
-_8 = np.asarray(_8)
-_8 = _8[_8 != np.array(None)]
-_8 = _8.tolist()
-_8 = np.asarray(_8)
-
-_9 = b[9][:]
-_9 = np.asarray(_9)
-_9 = _9[_9 != np.array(None)]
-_9 = _9.tolist()
-_9 = np.asarray(_9)
-
-_10 = b[10][:]
-_10 = np.asarray(_10)
-_10 = _10[_10 != np.array(None)]
-_10 = _10.tolist()
-_10 = np.asarray(_10)
-
-_11 = b[11][:]
-_11 = np.asarray(_11)
-_11 = _11[_11 != np.array(None)]
-_11 = _11.tolist()
-_11 = np.asarray(_11)
-
-_12 = b[12][:]
-_12 = np.asarray(_12)
-_12 = _12[_12 != np.array(None)]
-_12 = _10.tolist()
-_12 = np.asarray(_12)
-
-x, y = _8.T
-print(_1)
-print(_2)
-print(_3)
-print(_4)
-print(_5)
-print(_6)
-print(_7)
-print(_8)
-print(_9)
-print(_10)
-print(_11)
-print(_12)
-
-print(altura2)
-print(ancho)
-#plt.plot(x, y, 'bo')
-#plt.show()
-
-'''
-timestamp = (356,297,290,275,298,321,334,338,326)
-distance = (171,353,446,537,605,693,803,892,944)
-data = np.array((timestamp, distance))
-tck, u = interpolate.splprep(data, s=0)
+tck, u = interpolate.splprep(axx, s=0)
 unew = np.arange(0, 1.01, 0.01)
 out = interpolate.splev(unew, tck)
-'''
-
-'''
-tck, u = interpolate.splprep(_1, s=0)
-unew = np.arange(0, 1.01, 0.01)
-out = interpolate.splev(unew, tck)
-plt.xlim(0, ancho)
-plt.ylim(0, altura)
+print(type(axx))
+print(axx)
+'''plt.xlim(0, ancho)
+plt.ylim(0, altura2)
 plt.xlabel('X Axis limit is (0,7)')
-plt.ylabel('Y Axis limit is (-0.5,4)')
+plt.ylabel('Y Axis limit is (-0.5,4)')'''
+img = plt.imread("ex2.jpg")
+fig, ax = plt.subplots()
+ax.imshow(img)
+
 plt.plot(out[0], out[1], color='orange')
-plt.plot(_1[0, :], _1[1, :], 'ob')
-plt.show()'''
+plt.plot(axx[0, :], axx[1, :], 'ob')
+
+plt.show()
