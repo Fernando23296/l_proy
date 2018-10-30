@@ -13,7 +13,7 @@ OPEN CV
 - Detector de bordes Canny cómo contar objetos con OpenCV y Python: https://programarfacil.com/blog/vision-artificial/detector-de-bordes-canny-opencv/
 - Scoliosis DATASET: https://radiopaedia.org/cases/scoliosis-7
 - X-ray vertebrae detection: http://answers.opencv.org/question/23459/x-ray-vertebrae-detection/
-
+- EROSION: https://homepages.inf.ed.ac.uk/rbf/HIPR2/erode.htm
 PYTHON
 - Blurring a part of an image in Python: https://github.com/Naereen/notebooks/blob/91732d5c046aa8f62bd995f1ca6d25c0b9c4f2a7/Blurring_a_part_of_an_image_in_Python.ipynb
 - KMEANS https://jakevdp.github.io/PythonDataScienceHandbook/05.11-k-means.html
@@ -21,6 +21,12 @@ PYTHON
 - Clustering With K-Means in Python: https://datasciencelab.wordpress.com/2013/12/12/clustering-with-k-means-in-python/
 - Algoritmo K-means: Aprenda esta Técnica Esencial a través de Ejemplos Paso a paso con Python: http://minerandodados.com.br/index.php/2018/02/02/algoritmo-k-means-python-passo-passo/
 - Creating and Plotting Cubic Splines in Python :https://www.analytics-link.com/single-post/2018/08/17/Creating-and-Plotting-Cubic-Splines-in-Python
+- From Python Nested Lists to Multidimensional numpy Arrays: https://cognitiveclass.ai/blog/nested-lists-multidimensional-numpy-arrays/
+- Look Ma, No For-Loops: Array Programming With NumPy: https://realpython.com/numpy-array-programming/
+- Python Numpy Tutorial :http://cs231n.github.io/python-numpy-tutorial/
+- Python Data Type Conversion Tutorial: https://www.datacamp.com/community/tutorials/python-data-type-conversion
+- Iterar una lista en Python con indices: http://lineadecodigo.com/python/iterar-una-lista-en-python-con-indices/
+- Axes in matplotlib: https://plot.ly/matplotlib/axes/
 
 TEORIA
 - Method to extract an enhanced cervical vertebrae area from a digital X-ray image: https://www.sciencedirect.com/science/article/pii/S2215016118300979
