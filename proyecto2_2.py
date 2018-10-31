@@ -22,6 +22,7 @@ print(width)
 ancho = int(width)
 altura2 = int(altura)
 alfa = int(altura/12)
+print("valor de alfa: ",alfa)
 #print(alfa)
 cons = 0
 
