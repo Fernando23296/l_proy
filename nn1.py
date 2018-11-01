@@ -60,67 +60,69 @@ def train():
     for i in range(iterations):
         # get a random point
         ri = np.random.randint(len(data))
-        point = data[ri]
+        for ii in range(11):
+            rii = np.random.randint(len(data))
+            point = data[ri][rii]
 
-        z = point[0] * w1 + point[1] * w2 + point[2]*w3 + point[3]*w4 + point[4]*w5 + point[5]*w6 + point[6]*w7 + point[7]*w8 + point[8]*w9 + point[9]*w10 + b
-        pred = sigmoid(z)  # networks prediction
+            z = (point[0][0] * w1) + point[1] * w2 + point[2]*w3 + point[3]*w4 + point[4]*w5 + point[5]*w6 + point[6]*w7 + point[7]*w8 + point[8]*w9 + point[9]*w10 + b
+            pred = sigmoid(z)  # networks prediction
 
-        target = point[10]
+            target = point[10]
 
-        # cost for current random point
-        cost = np.square(pred - target)
-        '''
-        # print the cost over all data points every 1k iters
-        if i % 100 == 0:
-            c = 0
-            for j in range(len(data)):
-                p = data[j]
-                p_pred = sigmoid(w1 * p[0] + w2 * p[1] + b)
-                c += np.square(p_pred - p[2])
-            costs.append(c)
-        '''
-        dcost_dpred = 2 * (pred - target)
-        dpred_dz = sigmoid_p(z)
+            # cost for current random point
+            cost = np.square(pred - target)
+            '''
+            # print the cost over all data points every 1k iters
+            if i % 100 == 0:
+                c = 0
+                for j in range(len(data)):
+                    p = data[j]
+                    p_pred = sigmoid(w1 * p[0] + w2 * p[1] + b)
+                    c += np.square(p_pred - p[2])
+                costs.append(c)
+            '''
+            dcost_dpred = 2 * (pred - target)
+            dpred_dz = sigmoid_p(z)
 
-        dz_dw1 = point[0]
-        dz_dw2 = point[1]
-        dz_dw3 = point[2]
-        dz_dw4 = point[3]
-        dz_dw5 = point[4]
-        dz_dw6 = point[5]
-        dz_dw7 = point[6]
-        dz_dw8 = point[7]
-        dz_dw9 = point[8]
-        dz_dw10 = point[9]
-        dz_db = 1
+            dz_dw1 = point[0]
+            dz_dw2 = point[1]
+            dz_dw3 = point[2]
+            dz_dw4 = point[3]
+            dz_dw5 = point[4]
+            dz_dw6 = point[5]
+            dz_dw7 = point[6]
+            dz_dw8 = point[7]
+            dz_dw9 = point[8]
+            dz_dw10 = point[9]
+            dz_db = 1
 
-        dcost_dz = dcost_dpred * dpred_dz
+            dcost_dz = dcost_dpred * dpred_dz
 
-        dcost_dw1 = dcost_dz * dz_dw1
-        dcost_dw2 = dcost_dz * dz_dw2
-        dcost_dw3 = dcost_dz * dz_dw3
-        dcost_dw4 = dcost_dz * dz_dw4
-        dcost_dw5 = dcost_dz * dz_dw5
-        dcost_dw6 = dcost_dz * dz_dw6
-        dcost_dw7 = dcost_dz * dz_dw7
-        dcost_dw8 = dcost_dz * dz_dw8
-        dcost_dw9 = dcost_dz * dz_dw9
-        dcost_dw10 = dcost_dz * dz_dw10
+            dcost_dw1 = dcost_dz * dz_dw1
+            dcost_dw2 = dcost_dz * dz_dw2
+            dcost_dw3 = dcost_dz * dz_dw3
+            dcost_dw4 = dcost_dz * dz_dw4
+            dcost_dw5 = dcost_dz * dz_dw5
+            dcost_dw6 = dcost_dz * dz_dw6
+            dcost_dw7 = dcost_dz * dz_dw7
+            dcost_dw8 = dcost_dz * dz_dw8
+            dcost_dw9 = dcost_dz * dz_dw9
+            dcost_dw10 = dcost_dz * dz_dw10
 
-        dcost_db = dcost_dz * dz_db
+            dcost_db = dcost_dz * dz_db
 
-        w1 = w1 - learning_rate * dcost_dw1
-        w2 = w2 - learning_rate * dcost_dw2
-        w3 = w3 - learning_rate * dcost_dw3
-        w4 = w4 - learning_rate * dcost_dw4
-        w5 = w5 - learning_rate * dcost_dw5
-        w6 = w6 - learning_rate * dcost_dw6
-        w7 = w7 - learning_rate * dcost_dw7
-        w8 = w8 - learning_rate * dcost_dw8
-        w9 = w9 - learning_rate * dcost_dw9
-        w10 = w10 - learning_rate * dcost_dw10
+            w1 = w1 - learning_rate * dcost_dw1
+            w2 = w2 - learning_rate * dcost_dw2
+            w3 = w3 - learning_rate * dcost_dw3
+            w4 = w4 - learning_rate * dcost_dw4
+            w5 = w5 - learning_rate * dcost_dw5
+            w6 = w6 - learning_rate * dcost_dw6
+            w7 = w7 - learning_rate * dcost_dw7
+            w8 = w8 - learning_rate * dcost_dw8
+            w9 = w9 - learning_rate * dcost_dw9
+            w10 = w10 - learning_rate * dcost_dw10
 
-        b = b - learning_rate * dcost_db
+            b = b - learning_rate * dcost_db
 
     return  w1, w2, b
 

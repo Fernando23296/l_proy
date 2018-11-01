@@ -7,7 +7,7 @@ for i in range(1000):
 costs=[]
 
 # print the cost over all data points every 1k iters
-data = [[[282,   0],
+data = [[[282,   0,],
          [209,  71],
          [216, 119],
          [187, 207],
