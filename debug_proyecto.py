@@ -10,7 +10,8 @@ from random import *
 
 
 #FUNCIONA PERO LAS COORDENADAS SALEN DEL CORTE
-img = cv2.imread('pruebax.png', cv2.IMREAD_COLOR)
+img = cv2.imread('ex2_ppp.png', cv2.IMREAD_COLOR)
+img_2=
 dimensions = img.shape
 
 # height, width, number of channels in image
@@ -20,7 +21,7 @@ print(width)
 #print("Altura: ",altura)
 #print("Ancho: ", width)
 ancho = int(width)
-altura2=int(altura)
+altura2 = int(altura)
 alfa = int(altura/12)
 #print(alfa)
 cons = 0
@@ -59,11 +60,10 @@ for i in range(0, 13):
         else:
                 cX, cY = 0, 0
         xx = str(cX)+","+str(cY)
-       
+
         print(i)
         #a[i][count] = np.array([cX,cY])
         a[i][count] = [cX, cY]
-        
 
         print(xx)
         #print(c)
@@ -86,13 +86,13 @@ for i in range(0, 13):
         #imagen=image
         #img[0:100,0:490]=imagen
         #cv2.imshow("Image", img)
-
+        cv2.imshow("Image", thresh)
         count = count+1
 
     cons = cons2
     i = i+1
 
-cero=[0,0]
+cero = [0, 0]
 b = [[cero if x is None else x for x in c] for c in a]
 print("+++ se invierte +++"*10)
 print(b[10])
@@ -101,32 +101,29 @@ print("+++"*10)
 print(b[2])
 print("+++"*10)
 print("*"*10)
-contador=1
-for i in range(2,13):
-    for ii in range(0,50):
-        b[i][ii][1]+=alfa*contador
-    contador=contador+1
-print("ESTOOOOOO ESSSS ALFAAA:",alfa)
-for u in range(1,13):
-    for uu in range(0,50):
-        if (b[u][uu][0]==0):
+contador = 1
+for i in range(2, 13):
+    for ii in range(0, 50):
+        b[i][ii][1] += alfa*contador
+    contador = contador+1
+print("ESTOOOOOO ESSSS ALFAAA:", alfa)
+for u in range(1, 13):
+    for uu in range(0, 50):
+        if (b[u][uu][0] == 0):
             b[u][uu] = None
         else:
             pass
 
 
+print("altura", altura2)
+print("ancho", ancho)
 
 
-print("altura",altura2)
-print("ancho",ancho)
-
-
-
-ax = np.zeros(shape=(13,1),dtype=object)
-contador=0
+ax = np.zeros(shape=(13, 1), dtype=object)
+contador = 0
 for e in range(1, 13):
-    ax[e][0]=b[e][randint(0, 10)]
-cero=[0,0]
+    ax[e][0] = b[e][randint(0, 10)]
+cero = [0, 0]
 print(ax)
 print("__"*5)
 #ax = [[cero if x is None else x for x in c] for c in ax]
@@ -136,10 +133,10 @@ ax = ax.tolist()
 print(ax)
 ax.remove(0)
 
-ancho2=int(ancho/2)
+ancho2 = int(ancho/2)
 axx = np.asarray(ax)
 bx = np.array([[ancho2, altura2]])
-cx= np.concatenate((axx, bx), axis=0)
+cx = np.concatenate((axx, bx), axis=0)
 dx = np.array([[ancho2, 0]])
 axx = np.concatenate((dx, cx), axis=0)
 
@@ -151,7 +148,7 @@ unew = np.arange(0, 1.01, 0.01)
 out = interpolate.splev(unew, tck)
 
 
-img = plt.imread("pruebax.png")
+img = plt.imread("ex2.jpg")
 fig, ax = plt.subplots()
 ax.imshow(img)
 
@@ -159,5 +156,3 @@ plt.plot(out[0], out[1], color='orange')
 plt.plot(axx[0, :], axx[1, :], 'ob')
 
 plt.show()
-
-

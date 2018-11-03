@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 
-img = cv2.imread('diag3.png')
+img = cv2.imread('ex.png')
 
 kernel = np.ones((5, 5), np.uint8)
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
