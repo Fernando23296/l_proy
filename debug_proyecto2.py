@@ -93,19 +93,17 @@ for i in range(0, 13):
 
 cero = [0, 0]
 b = [[cero if x is None else x for x in c] for c in a]
-print("+++ se invierte +++"*10)
-print(b[10])
 b = b[::-1]
-print("+++"*10)
-print(b[2])
-print("+++"*10)
-print("*"*10)
 contador = 1
-for i in range(2, 13):
-    for ii in range(0, 50):
-        b[i][ii][1] += alfa*contador
-    contador = contador+1
-print("ESTOOOOOO ESSSS ALFAAA:", alfa)
+
+def igualador(l):
+
+    for i in range(2, 13):
+        for ii in range(0, 50):
+            l[i][ii][1] += alfa*contador
+        contador = contador+1
+    return l
+b=igualador(b)
 for u in range(1, 13):
     for uu in range(0, 50):
         if (b[u][uu][0] == 0):
@@ -173,25 +171,7 @@ print(lis_3)
 print("n"*30)
 
 ax=seleccionador(lis_3)
-'''
-_____________________________________________________________
-'''
 
-
-'''
-for e in range(1, 13):
-    ax[e][0] = b[e][randint(0, 10)]
-
-
-
-cero = [0, 0]
-print(ax)
-print("__"*5)
-#ax = [[cero if x is None else x for x in c] for c in ax]
-ax = ax[ax != np.array(None)]
-
-ax = ax.tolist()
-'''
 print(ax)
 
 
