@@ -9,7 +9,7 @@ from pylab import *
 from random import *
 
 
-img = cv2.imread('ex1_ppp.png', cv2.IMREAD_COLOR)
+img = cv2.imread('ex2_ppp.png', cv2.IMREAD_COLOR)
 dimensions = img.shape
 altura = img.shape[0]
 width = img.shape[1]
@@ -149,7 +149,7 @@ unew = np.arange(0, 1.01, 0.01)
 out = interpolate.splev(unew, tck)
 
 
-img = plt.imread("ex1.jpg")
+img = plt.imread("ex2.jpg")
 fig, ax = plt.subplots()
 ax.imshow(img)
 

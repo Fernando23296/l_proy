@@ -3,7 +3,7 @@ import imutils
 import cv2
 
 #FUNCIONA PERO LAS COORDENADAS SALEN DEL CORTE
-img = cv2.imread('ex.png', cv2.IMREAD_COLOR)
+img = cv2.imread('ex2_ppp.png', cv2.IMREAD_COLOR)
 dimensions = img.shape
 
 # height, width, number of channels in image
@@ -58,12 +58,17 @@ for i in range(1,1000):
         #TIPO DE LETRA, COLOR?
         cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
     
-        #cv2.imshow("Image", image)
+        
         #imagen=image
         #img[0:100,0:490]=imagen
         
-        count=count+1
-    cv2.imshow("Image", thresh)
+        
+        #cv2.imshow("Image", image)
+        #imagen=image
+        #img[0:100,0:490]=imagen
+        cv2.imshow("Image", img)
+        count = count+1
+
     cv2.waitKey(0)
     cons = cons2
     i=i+1

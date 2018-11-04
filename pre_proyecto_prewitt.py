@@ -66,7 +66,6 @@ img[0:height, qua7:width] = [0]
 
 kernel = np.ones((5, 5), np.uint8)
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-erosion = cv2.erode(gray, kernel, iterations=2)
 
 thresh = cv2.threshold(gray, 150, 75, cv2.THRESH_BINARY)[1]
 img_gaussian = cv2.GaussianBlur(thresh, (3, 3), 0)
@@ -83,3 +82,5 @@ cv2.imwrite('ex4_ppp.png', skel.astype(np.uint8)*255)
 cv2.imshow("skel", skel.astype(np.uint8)*255)
 
 cv2.waitKey(0)
+
+
