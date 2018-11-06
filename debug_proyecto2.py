@@ -12,8 +12,8 @@ from random import *
 from sklearn.cluster import KMeans
 from matplotlib import  transforms
 
-img = cv2.imread('ex2_ppp.png', cv2.IMREAD_COLOR)
-imagen2 = imread('ex2.jpg')
+img = cv2.imread('pruebazzzz.png', cv2.IMREAD_COLOR)
+imagen2 = imread('pruebazzzz.png')
 dimensions = img.shape
 altura = img.shape[0]
 width = img.shape[1]
@@ -61,7 +61,7 @@ for i in range(0, 13):
         cv2.putText(image, xx, (cX - 50, cY - 50),
                     #TIPO DE LETRA, COLOR?
                     cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
-
+        cv2.imshow("Image", img)
         count = count+1
     cons = cons2
     i = i+1
@@ -230,9 +230,11 @@ print("kha",f)
 # calculate new x's and y's
 x_new = np.linspace(x[0], x[-1], 50)
 x_new2 = x_new[::-1]
+'''
 print("khee:",x_new)
 print("_"*20)
 print("khee:", x_new2)
+'''
 y_new = f(x_new2)
 y_new = y_new[::-1]
 img2 = rotate(imagen2, -90)
@@ -250,6 +252,8 @@ aa = ax.imshow(resized)
 altura = img.shape[0]
 width = img.shape[1]
 the_plot = plt.plot( x_new2, y_new)
+
+
 plt.savefig('ejemplo.png')
 plt.show()
 

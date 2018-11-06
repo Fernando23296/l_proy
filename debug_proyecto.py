@@ -86,7 +86,7 @@ for i in range(0, 13):
         #imagen=image
         #img[0:100,0:490]=imagen
         #cv2.imshow("Image", img)
-        cv2.imshow("Image", thresh)
+        
         count = count+1
 
     cons = cons2
