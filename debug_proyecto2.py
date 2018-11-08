@@ -12,23 +12,24 @@ from random import *
 from sklearn.cluster import KMeans
 from matplotlib import  transforms
 
-img = cv2.imread('pruebazzzz.png', cv2.IMREAD_COLOR)
-imagen2 = imread('pruebazzzz.png')
+img = cv2.imread('ex5_gts.png', cv2.IMREAD_COLOR)
+imagen2 = imread('ex5.png')
+division=12
+
+
 dimensions = img.shape
 altura = img.shape[0]
 width = img.shape[1]
-print(width)
 ancho = int(width)
 altura2 = int(altura)
-alfa = int(altura/12)
+alfa = int(altura/division)
 cons = 0
 
-a = np.empty((13, 50), dtype=object)
-for i in range(0, 13):
+a = np.empty(((division+1), 50), dtype=object)
+for i in range(0, (division+1)):
 
     cons1 = cons
     cons2 = cons1+alfa
-    print("____")
     image = img[cons1:cons2, 0:ancho]
 
     #convirtiendo a escala de grises
@@ -50,19 +51,18 @@ for i in range(0, 13):
         else:
                 cX, cY = 0, 0
         xx = str(cX)+","+str(cY)
-        print(i)
         a[i][count] = [cX, cY]
-        print(xx)
 
         cv2.drawContours(image, [c], -1, (0, 0, 255), 2)
         #CIRCULO DE CENTRO
         cv2.circle(image, (cX, cY), 7, (0, 0, 255), -1)
         #COORDENADAS
-        cv2.putText(image, xx, (cX - 50, cY - 50),
+        cv2.putText(image, xx, (cX - 20, cY - 20),
                     #TIPO DE LETRA, COLOR?
                     cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
         cv2.imshow("Image", img)
         count = count+1
+
     cons = cons2
     i = i+1
 
@@ -73,7 +73,7 @@ b = [[cero if x is None else x for x in c] for c in a]
 
 def igualador(l):
     contador = 1
-    for i in range(2, 13):
+    for i in range(1, (division+1)):
         for ii in range(0, 50):
             l[i][ii][1] += alfa*contador
         contador = contador+1
@@ -81,21 +81,17 @@ def igualador(l):
 
 b=igualador(b)
 
-def reemplazador(l):
-
-    for u in range(1, 13):
+def reemplazador(l,div):
+    #AQUI SE CAMBIO EL 1 DEL RANGE, ANTES ERA 2-------------------------------------
+    for u in range(0, (div+1)):
         for uu in range(0, 50):
             if (l[u][uu][0] == 0):
                 l[u][uu] = None
             else:
                 pass
     return l
-b=reemplazador(b)
-
-print("altura", altura2)
-print("ancho", ancho)
-
-ax = np.zeros(shape=(13, 1), dtype=object)
+b=reemplazador(b,division)
+ax = np.zeros(shape=((division+1), 1), dtype=object)
 contador = 0
 
 def limpio(l):
@@ -107,9 +103,9 @@ def limpio(l):
     return a
 
 
-def rellenador(l, ancho, largo):
+def rellenador(l,div, ancho, largo):
     tam = len(l)
-    largo = int(largo/12)
+    largo = int(largo/div)
     ancho = int(ancho/2)
     for i in range(0, tam):
         if (l[i] == []):
@@ -122,7 +118,7 @@ def rellenador(l, ancho, largo):
 def seleccionador(l):
     a=[]
     tam=len(l)
-    for i in range(1,tam):
+    for i in range(0,tam):
         tam1=(len(l[i])-1)
         
         a.append(l[i][randint(0, tam1)])
@@ -136,16 +132,7 @@ def seleccionador_kmeans(l):
 
         tam1 = len(l[i])
         x1 = np.array([])
-        #for ii in range(0,tam1):
-        #print("*"*30)
-        #print(i)
-        #print(tam1)
-
         x1 = l[i]
-
-        #print(l[i][ii])
-        #print("*"*40)
-        #print(x1)
         tam2 = len(x1)
         if (tam2 == 1):
             k = 1
@@ -173,68 +160,65 @@ def seleccionador_kmeans(l):
             # Comparing with scikit-learn centroids
             #print(C)  # From Scratch
             xpro.append(centroids[randint(0, 1)])
-
-        '''
-        list_two = [4, 5, 6]
-        xpro.append(list_two)
-        print(x1)
-        '''
     return xpro
 
 
 lis_2=[]
 
-for i in range(1,13):
+for i in range(0, (division+1)):
     a=limpio(b[i])
     lis_2.append(a)
 
 lis_3=[]
-lis_3 = rellenador(lis_2,ancho,altura2)
+lis_3 = rellenador(lis_2,division,ancho,altura2)
 
 ax=seleccionador_kmeans(lis_3)
-print("lista final:",ax)
-print("tamanio lista final:",len(ax))
-print(type(ax))
-#ax=ax[::-1]
-#print(type(ax))
+
+print("Lista: ",ax)
+
 ancho2 = int(ancho/2)
 axx = np.asarray(ax)
 bx = np.array([[ancho2, altura2]])
 cx = np.concatenate((axx, bx), axis=0)
 dx = np.array([[ancho2, 0]])
 
-print(ax[0][1])
 if (ax[0][1]<alfa):
     axx = np.concatenate((dx, cx), axis=0)
-    print("****"*20)
-    print(axx)
-    print("****"*20)
     axx=np.delete(axx, 1, 0)
-    print("****"*20)
-    print(type(axx))
-    print(axx)
-    print("****"*20)
     axx = np.array(axx.T)
 else: 
     axx = np.array(cx.T)
-print("lista final:", axx)
-print("lista final tamano:", len(axx))
-#axx = np.concatenate((dx, cx), axis=0)
-#axx = np.array(axx.T)
+
+print("VECTOR FINAL: ",axx)
+print("altura",altura2)
+print("ancho", ancho)
+
+dim = (ancho,altura2)
+resized = cv2.resize(imagen2, dim, interpolation=cv2.INTER_AREA)
+
+fig, ax = plt.subplots()
+plt.imshow(resized)
+l_x=axx[0]
+l_x=l_x.tolist()
+l_y = axx[1]
+l_y = l_y.tolist()
+
+plt.plot(l_x,l_y, 'ob')
+#plt.plot(axx[0, :], axx[1, :], 'ob')
+plt.show()
+
+
+#de aqui para abajo es todo girado
 y=axx[0]
 x=axx[1]
 z = np.polyfit(x, y, 5)
 f = np.poly1d(z)
-print("kha",f)
 
+print("Ecuacion bonita: ", f)
 # calculate new x's and y's
 x_new = np.linspace(x[0], x[-1], 50)
 x_new2 = x_new[::-1]
-'''
-print("khee:",x_new)
-print("_"*20)
-print("khee:", x_new2)
-'''
+
 y_new = f(x_new2)
 y_new = y_new[::-1]
 img2 = rotate(imagen2, -90)
@@ -251,6 +235,14 @@ aa = ax.imshow(resized)
 # height, width, number of channels in image
 altura = img.shape[0]
 width = img.shape[1]
+y_grafo=y
+print(type(y_grafo))
+#CABECERA
+y_inv = y[::-1]
+plt.plot(x,y_inv, 'ob')
+
+#plt.plot(319, 216, 'ob')
+
 the_plot = plt.plot( x_new2, y_new)
 
 
@@ -258,17 +250,4 @@ plt.savefig('ejemplo.png')
 plt.show()
 
 
-'''
-base = plt.gca().transData
-rot = transforms.Affine2D().rotate_deg(90)
-image = cv2.imread('ex_ppp.png')
 
-
-plt.imshow(image)
-
-# define transformed line
-plt.plot(x_new, y_new, 'r', transform=rot + base)
-
-
-plt.show()
-'''

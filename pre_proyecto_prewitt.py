@@ -52,7 +52,7 @@ def skeletonize(img):
     return img
 
 
-img = cv2.imread('ex4.jpg')
+img = cv2.imread('ex7.jpg')
 dimensions = img.shape
 
 # height, width, number of channels in image
@@ -66,8 +66,7 @@ img[0:height, qua7:width] = [0]
 
 kernel = np.ones((5, 5), np.uint8)
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-
-thresh = cv2.threshold(gray, 150, 75, cv2.THRESH_BINARY)[1]
+thresh = cv2.threshold(gray, 146, 96, cv2.THRESH_BINARY)[1]
 img_gaussian = cv2.GaussianBlur(thresh, (3, 3), 0)
 kernelx = np.array([[1, 1, 1], [0, 0, 0], [-1, -1, -1]])
 kernely = np.array([[-1, 0, 1], [-1, 0, 1], [-1, 0, 1]])
@@ -78,7 +77,7 @@ img_prewitty = cv2.filter2D(img_gaussian, -1, kernely)
 img = img_prewittx + img_prewitty
 ret, img = cv2.threshold(img, 172, 255, 0)
 skel = skeletonize(img)
-cv2.imwrite('ex4_ppp.png', skel.astype(np.uint8)*255)
+cv2.imwrite('ex7_ppp.png', skel.astype(np.uint8)*255)
 cv2.imshow("skel", skel.astype(np.uint8)*255)
 
 cv2.waitKey(0)

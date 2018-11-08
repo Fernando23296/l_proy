@@ -41,7 +41,7 @@ def skeletonize(img):
     return img
 
 
-img = cv2.imread("propro.png", 0)
+img = cv2.imread("ex2_ppp.png", 0)
 ret, img = cv2.threshold(img, 172, 255, 0)
 skel = skeletonize(img)
 #cv2.imwrite('ero_prexx2.png', skel.astype(np.uint8)*255)
