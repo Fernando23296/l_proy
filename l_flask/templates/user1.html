@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <h1>{{ nombre }}</h1>
+    <h1>{{ edad }}</h1>
+    {% if edad > 19 %}
+        <h1>ES MAYOR</h1>
+    {%endif%}
+    <h1>{{ mi_lista }}</h1>
+    <H1><u>Lista desglozada:</u></H1>
+    {% for item in mi_lista%}
+        <h2>{{item}}</h2>
+    {% endfor %}
+</body>
+</html>
