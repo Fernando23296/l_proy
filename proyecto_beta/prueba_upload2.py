@@ -14,6 +14,13 @@ APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 def index():
     return render_template("upload.html")
 
+def nombre_archivo(na):
+        punto = na.find(".")
+        b = ''
+        for i in range(0, punto):
+                b += str(na[i])
+        return b
+
 
 @app.route("/upload", methods=["POST"])
 def upload():
