@@ -3,6 +3,7 @@ for i in range(1000):
     if i % 100 == 0:
         print(i)
 '''
+'''
 
 costs=[]
 
@@ -29,3 +30,13 @@ data = [[[282,   0,],
          [282, 915], 0]]
 point=data[1][2]
 print(point)
+'''
+
+def nombre_archivo(na):
+        punto=na.find(".")
+        b=''
+        for i in range(0,punto):
+                b+=str(na[i])
+        return b
+
+print(nombre_archivo('bruno.jk'))
