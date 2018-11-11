@@ -61,6 +61,8 @@ def upload():
     division = 13
     height = img.shape[0]
     width = img.shape[1]
+    height_original=int(height)
+    width_original=int(width)
     qua = int(width/10)
     qua2 = int(qua*3)
     qua7 = int(qua*7)
@@ -175,10 +177,6 @@ def upload():
     else:
         axx = np.array(cx.T)
 
-    #print("VECTOR FINAL: ", axx)
-    #print("altura", altura)
-    #print("ancho", ancho)
-
     dim = (ancho, altura)
     resized = cv2.resize(imagen2, dim, interpolation=cv2.INTER_AREA)
 
@@ -189,20 +187,10 @@ def upload():
     l_y = axx[1]
     l_y = l_y.tolist()
 
-    #plt.plot(l_x, l_y, 'ob')
-    #plt.plot(axx[0, :], axx[1, :], 'ob')
-    #plt.show()
-
-
     #de aqui para abajo es todo girado
     y = axx[0]
-    #print("_"*30)
-    #print(y)
-    #print("_"*30)
     x = axx[1]
-    #print("_"*30)
-    #print(x)
-    #print("_"*30)
+
 
 
     #print("___"*20)
@@ -228,36 +216,15 @@ def upload():
     y_new = f(x_new2)
     y_new = y_new[::-1]
 
-    print(img_plot(x_new2,y_new,filename,fig,ax,a_2,b_2))
-    '''
-    
-    img2 = rotate(imagen2, -90)
+    pre=img_plot(x_new2,y_new,filename,fig,ax,a_2,b_2)
+    plot_rotate(pre,ax,width_original,height_original)
 
-    width = altura
-
-    height = ancho
-    dim = (width, height)
-    resized = cv2.resize(img2, dim, interpolation=cv2.INTER_AREA)
-
-  
-    aa = ax.imshow(resized)
-
-
-    altura = img.shape[0]
-    width = img.shape[1]
-    y_grafo = y
-  
-    y_inv = y[::-1]
-
-    plt.plot(a_2, b_2, 'or')
-    '''
-
-
-
-    return render_template("complete.html", image_name=titulo_final)
-
-
-
+    extracto2= nombre_archivo(filename)
+    extracto21=extracto2+'pre'
+    complemento = '_gts.png'
+    titulo_final2 = extracto21+complemento
+    print(titulo_final2)
+    return render_template("complete.html", image_name=titulo_final2)
 
 if __name__ == "__main__":
     app.run(port=4555, debug=True)
