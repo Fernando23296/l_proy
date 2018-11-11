@@ -12,8 +12,8 @@ from random import *
 from sklearn.cluster import KMeans
 from matplotlib import  transforms
 
-img = cv2.imread('ex5_gts.png', cv2.IMREAD_COLOR)
-imagen2 = imread('ex5.png')
+img = cv2.imread('ex2_gts.png', cv2.IMREAD_COLOR)
+imagen2 = imread('ex2.png')
 division=12
 
 
@@ -22,6 +22,8 @@ altura = img.shape[0]
 width = img.shape[1]
 ancho = int(width)
 altura2 = int(altura)
+print('wi:',ancho)
+print('he:',altura2)
 alfa = int(altura/division)
 cons = 0
 
@@ -210,11 +212,86 @@ plt.show()
 
 #de aqui para abajo es todo girado
 y=axx[0]
+print("_"*30)
+print(y)
+print("_"*30)
 x=axx[1]
+print("_"*30)
+print(x)
+print("_"*30)
+
+
+def max_min(x, y):
+    z = np.polyfit(x, y, 5)
+    #print(z)
+    #print('.-.-'*30)
+    f = np.poly1d(z)
+    #print("Ecuacion bonita: ")
+    #print(f)
+    # calculate new x's and y's
+    x_new = np.linspace(x[0], x[-1], 50)
+
+    x_new2 = x_new[::-1]
+
+    y_new = f(x_new2)
+    y_new = y_new[::-1]  # LO GIRAMOS
+    #a=f*10000000000
+
+    prim = f.deriv(1)
+    segu = f.deriv(2)
+    lroot = np.roots(prim)
+    lroot2 = []
+    for i in lroot:
+        lroot2.append(segu(i))
+    lroot3 = []
+    for ii in lroot:
+        lroot3.append(f(ii))
+
+    xdev = lroot[::-1]
+    ydev = lroot3
+
+    return xdev, ydev
+
+def punto_inflexion(x,y):
+    z = np.polyfit(x, y, 5)
+    #print(z)
+    #print('.-.-'*30)
+    f = np.poly1d(z)
+    #print("Ecuacion bonita: ")
+    #print(f)
+    # calculate new x's and y's
+    x_new = np.linspace(x[0], x[-1], 50)
+
+    x_new2 = x_new[::-1]
+
+    y_new = f(x_new2)
+    y_new = y_new[::-1]  # LO GIRAMOS
+    #a=f*10000000000
+
+    prim = f.deriv(1)
+    segu = f.deriv(2)
+    lroot = np.roots(segu)
+    lroot2=[]
+    for i in lroot:
+        lroot2.append(f(i))
+    return lroot,lroot2
+
+print("___"*20)
+pi1,pi2=punto_inflexion(x,y)
+print("+++"*20)
+a, b = max_min(x, y)
+a_2=a[1:3]
+b_2=b[1:3]
+print(a)
+print("___"*20)
+print(b)
+
+
 z = np.polyfit(x, y, 5)
 f = np.poly1d(z)
 
-print("Ecuacion bonita: ", f)
+print("Ecuacion bonita: ")
+print(f)
 # calculate new x's and y's
 x_new = np.linspace(x[0], x[-1], 50)
 x_new2 = x_new[::-1]
@@ -224,6 +301,7 @@ y_new = y_new[::-1]
 img2 = rotate(imagen2, -90)
 
 width = altura2
+
 height = ancho
 dim = (width, height)
 resized = cv2.resize(img2, dim, interpolation=cv2.INTER_AREA)
@@ -239,12 +317,18 @@ y_grafo=y
 print(type(y_grafo))
 #CABECERA
 y_inv = y[::-1]
-plt.plot(x,y_inv, 'ob')
 
+#plt.plot(x,y_inv, 'ob')
+#plt.plot(324.148, 229.3530, 'ob')
+#plt.plot(126.688, 158.2289, 'ob')
 #plt.plot(319, 216, 'ob')
-
+print("_"*20)
+print(x_new2)
+print("_"*20)
+print(y_new)
+plt.plot(a_2,b_2, 'or')
+plt.plot(pi1,pi2, 'og')
 the_plot = plt.plot( x_new2, y_new)
-
 
 plt.savefig('ejemplo.png')
 plt.show()

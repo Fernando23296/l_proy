@@ -15,6 +15,9 @@ B = numpy.append(B, A)
 
 print (B)
 '''
+
+
+'''
 import numpy as np
 lista = np.array([[252.  ,0.],
          [435. , 58.],
@@ -32,3 +35,6 @@ lista = np.array([[252.  ,0.],
          [252., 772.]])
 lista= np.delete(lista, 0, 0)
 print(lista)
+'''
+a=[1,2,3,4]
+print(a[1:3])

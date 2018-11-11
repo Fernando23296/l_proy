@@ -49,7 +49,7 @@ def skeletonize(img):
     return img
 
 
-img = cv2.imread('ex7.png')
+img = cv2.imread('ex2.png')
 
 dimensions = img.shape
 
@@ -68,7 +68,7 @@ thresh = cv2.threshold(gray, 195, 300, cv2.THRESH_BINARY)[1]
 
 skel = skeletonize(thresh)
 
-cv2.imwrite('ex7_gts.png', skel.astype(np.uint8)*255)
+cv2.imwrite('ex22_gts.png', skel.astype(np.uint8)*255)
 cv2.imshow("skel", skel.astype(np.uint8)*255)
 
 cv2.waitKey(0)
