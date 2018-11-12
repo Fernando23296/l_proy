@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-
-<body>
-    <img src="{{url_for('static', filename=image_name) }}" </body> </html>
+{%extends 'base/base.html'%}
+{%block content%}
+<h1>Los resultados son los siguientes:</h1>
+    <table>
+  
+        <tr>
+            <td width=10%><img class="resize" src="{{url_for('static', filename=image_original) }}"></td>
+            <td width=10%> <img class="resize" src="{{url_for('static', filename=image_name) }}"></td>
+        </tr>
+        
+    </table>
+    
+{%endblock%}

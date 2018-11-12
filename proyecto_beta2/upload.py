@@ -58,7 +58,7 @@ def upload():
     
     
     
-    division = 13
+    division = 8
     height = img.shape[0]
     width = img.shape[1]
     height_original=int(height)
@@ -224,7 +224,7 @@ def upload():
     complemento = '_gts.png'
     titulo_final2 = extracto21+complemento
     print(titulo_final2)
-    return render_template("complete.html", image_name=titulo_final2)
+    return render_template("complete.html", image_original=filename, image_name=titulo_final2)
 
 if __name__ == "__main__":
     app.run(port=4555, debug=True)
