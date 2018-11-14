@@ -26,11 +26,8 @@
  }
 /* Add a color to the active/current link */
 .topnav a.active {
-    background-color: rgb(184, 196, 13);
+    background-color: rgb(13, 108, 196);
     color: white;
 }
 .button3 {background-color: #f44336;} /* Red */ 
-img.resize {
-  max-width:50%;
-  max-height:50%;
-}
+
