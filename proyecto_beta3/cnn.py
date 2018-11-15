@@ -61,7 +61,7 @@ def cnn(nombre):
     result = classifier.predict(test_image)
     training_set.class_indices
     if result[0][0] >= 0.5:
-        prediction = 'c'
-    else:
         prediction = 's'
+    else:
+        prediction = 'c'
     return prediction
