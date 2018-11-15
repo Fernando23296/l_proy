@@ -57,9 +57,13 @@ def upload():
 
     print(filename)
     
-    
-    
-    division = 8
+    tipo=cnn(filename)
+    print(tipo)
+    if (tipo=='s'):
+        division=12
+    else:
+        division=8
+    print(division)
     height = img.shape[0]
     width = img.shape[1]
     height_original=int(height)
