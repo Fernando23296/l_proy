@@ -17,7 +17,6 @@ fuente = 'ex2.png'
 img = cv2.imread(fuente, cv2.IMREAD_COLOR)
 imagen2 = imread(fuente)
 division = 13
-
 '''
 FUNCIONES
 '''

@@ -26,17 +26,24 @@ classifier.compile(optimizer='adam', loss='binary_crossentropy',metrics=['accura
 
 
 train_datagen = ImageDataGenerator(
+    #volver a escalar
     rescale=1./255,
+    #rango de corte
     shear_range=0.2,
+    #rango de zoom
     zoom_range=0.2,
+    #volteo horizontal
     horizontal_flip=True)
 
-test_datagen = ImageDataGenerator(rescale=1./255)
+test_datagen = ImageDataGenerator(
+    rescale=1./255)
 
 training_set = train_datagen.flow_from_directory(
     'dataset/training_set',
+    #tamaño deseado de la imagen
     target_size=(64, 64),
-    #bach_size= 32,
+    #bach_size= 32
+    #tipo de salida que se tendra
     class_mode='binary')
 
 test_set = test_datagen.flow_from_directory(
@@ -53,13 +60,17 @@ classifier.fit_generator(
     validation_data=test_set,
     validation_steps=50)
 
-test_image = image.load_img('ex8.jpg', target_size=(64, 64))
+test_image = image.load_img('ex2.jpg', target_size=(64, 64))
+
 test_image = image.img_to_array(test_image)
+
 test_image = np.expand_dims(test_image, axis=0)
+
 result = classifier.predict(test_image)
 training_set.class_indices
+
 if result[0][0] >= 0.5:
-	prediction = 'c'
-else:
 	prediction = 's'
+else:
+	prediction = 'c'
 print(prediction)
