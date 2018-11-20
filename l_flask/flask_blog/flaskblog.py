@@ -25,7 +25,7 @@ class Post(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'),nullable=False)
 
     def __repr__(self):
-        return "User('{self.title}','{self.date_posted}')"
+        return "User('{self.tittle}','{self.date_posted}')"
 posts = [
     {
         'author': 'Corey Schafer',
