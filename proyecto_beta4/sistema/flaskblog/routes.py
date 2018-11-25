@@ -4,8 +4,8 @@ from PIL import Image
 from flask import render_template, url_for, flash, redirect, request, abort
 from flaskblog import app, db, bcrypt, mail
 from flaskblog.forms import (RegistrationForm, LoginForm, UpdateAccountForm,
-                             PostForm, RequestResetForm, ResetPasswordForm)
-from flaskblog.models import User, Post
+                             PostForm, RequestResetForm, ResetPasswordForm, PatientForm)
+from flaskblog.models import User, Post, Patient
 from flask_login import login_user, current_user, logout_user, login_required
 from flask_mail import Message
 
@@ -21,6 +21,11 @@ def home():
 @app.route("/about")
 def about():
     return render_template('about.html', title='About')
+
+
+@app.route("/ejemplo")
+def ejemplo():
+    return render_template('ejemplo.html', title='ejemplo')
 
 
 @app.route("/register", methods=['GET', 'POST'])
@@ -109,10 +114,48 @@ def new_post():
                            form=form, legend='New Post')
 
 
+@app.route("/patient/new", methods=['GET', 'POST'])
+@login_required
+
+def new_patient():
+    form = PatientForm()
+    if form.validate_on_submit():
+        patient = Patient(name_patient=form.name_patient.data, observation=form.observation.data ,doctor=current_user)
+        db.session.add(patient)
+        db.session.commit()
+        flash('Your patitent has been created!', 'success')
+        return redirect(url_for('home'))
+    return render_template('create_patient.html', title='New Patient' ,form=form, legend='New Patient')
+
+
 @app.route("/post/<int:post_id>")
 def post(post_id):
     post = Post.query.get_or_404(post_id)
     return render_template('post.html', title=post.title, post=post)
+
+@app.route("/patient/<int:patient_id>")
+def patient(patient_id):
+    patient = Patient.query.get_or_404(patient_id)
+    return render_template('patient.html', name_patient=patient.name_patient, patient=patient)
+
+@app.route("/patient_wall")
+def patient_wall():
+    '''
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=5)
+    '''
+    page = request.args.get('page', 1, type=int)
+    patients = Patient.query.order_by(Patient.id).paginate(page=page, per_page=1000)
+    return render_template('patient_wall.html', patients=patients)
+   
+
+'''
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=5)
+    return render_template('home.html', posts=posts)
+
+'''
+
 
 
 @app.route("/post/<int:post_id>/update", methods=['GET', 'POST'])
