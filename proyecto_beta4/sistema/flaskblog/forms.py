@@ -31,7 +31,7 @@ class LoginForm(FlaskForm):
     email = StringField('Email',
                         validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
-    remember = BooleanField('Remember Me')
+    remember = BooleanField('Recuérdamelo')
     submit = SubmitField('Login')
 
 
@@ -40,41 +40,56 @@ class UpdateAccountForm(FlaskForm):
                            validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('Email',
                         validators=[DataRequired(), Email()])
-    picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png'])])
-    submit = SubmitField('Update')
+    picture = FileField('Actualizar imagen de perfil', validators=[FileAllowed(['jpg', 'png'])])
+    submit = SubmitField('Subir imagen')
 
     def validate_username(self, username):
         if username.data != current_user.username:
             user = User.query.filter_by(username=username.data).first()
             if user:
-                raise ValidationError('That username is taken. Please choose a different one.')
+                raise ValidationError('Ya existe el nombre de usuario, por favor elije otro')
 
     def validate_email(self, email):
         if email.data != current_user.email:
             user = User.query.filter_by(email=email.data).first()
             if user:
-                raise ValidationError('That email is taken. Please choose a different one.')
+                raise ValidationError('Ya existe el email, por favor elije otro')
 
 
 class PostForm(FlaskForm):
-    title = StringField('Title', validators=[DataRequired()])
-    content = TextAreaField('Content', validators=[DataRequired()])
+    title = StringField('Título', validators=[DataRequired()])
+    content = TextAreaField('Contenido', validators=[DataRequired()])
     submit = SubmitField('Post')
 
+class PatientForm(FlaskForm):
+    name_patient = StringField('Nombre', validators=[DataRequired()])
+    #sex = StringField('Sexo', validators=[DataRequired()])
+    observation = TextAreaField('Observaiones', validators=[DataRequired()])
+    submit = SubmitField('Form')
+    '''
 
+class PatientForm(FlaskForm):
+    name_patient = StringField('Nombre Paciente', validators=[DataRequired()])
+    sex = StringField('Sexo', validators=[DataRequired()])
+    observation = TextAreaField('Observaciones', validators=[DataRequired()])
+    submit = SubmitField('Form')
+'''
 class RequestResetForm(FlaskForm):
     email = StringField('Email',
                         validators=[DataRequired(), Email()])
-    submit = SubmitField('Request Password Reset')
+    submit = SubmitField('Cambio de password')
 
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
         if user is None:
-            raise ValidationError('There is no account with that email. You must register first.')
+            raise ValidationError('El email no estám registrado')
 
 
 class ResetPasswordForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
-    confirm_password = PasswordField('Confirm Password',
+    confirm_password = PasswordField('Confirmar contraseña',
                                      validators=[DataRequired(), EqualTo('password')])
-    submit = SubmitField('Reset Password')
+    submit = SubmitField('Cambiar contraseña')
+
+'''
+'''
