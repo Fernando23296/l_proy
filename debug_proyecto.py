@@ -11,7 +11,7 @@ from random import *
 
 #FUNCIONA PERO LAS COORDENADAS SALEN DEL CORTE
 img = cv2.imread('ex2_ppp.png', cv2.IMREAD_COLOR)
-img_2=
+
 dimensions = img.shape
 
 # height, width, number of channels in image
@@ -82,16 +82,19 @@ for i in range(0, 13):
                     #TIPO DE LETRA, COLOR?
                     cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
 
-        #cv2.imshow("Image", image)
+        cv2.imshow("Image", image)
         #imagen=image
         #img[0:100,0:490]=imagen
-        #cv2.imshow("Image", img)
+        cv2.imshow("Image", img)
         
         count = count+1
+    cv2.imshow("Image", img)
+    cv2.imwrite('imgploteada.png', img)
 
     cons = cons2
     i = i+1
 
+'''
 cero = [0, 0]
 b = [[cero if x is None else x for x in c] for c in a]
 print("+++ se invierte +++"*10)
@@ -156,3 +159,4 @@ plt.plot(out[0], out[1], color='orange')
 plt.plot(axx[0, :], axx[1, :], 'ob')
 
 plt.show()
+'''

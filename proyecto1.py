@@ -3,7 +3,7 @@ import imutils
 import cv2
 
 #FUNCIONA PERO LAS COORDENADAS SALEN DEL CORTE
-img = cv2.imread('ej/ej3_m.png', cv2.IMREAD_COLOR)
+img = cv2.imread('ex3.png', cv2.IMREAD_COLOR)
 dimensions = img.shape
 
 # height, width, number of channels in image
@@ -12,7 +12,7 @@ width = img.shape[1]
 #print("Altura: ",altura)
 #print("Ancho: ", width)
 ancho=int(width)
-alfa=int(altura/12)
+alfa=int(altura/10)
 #print(alfa)
 cons=0
 for i in range(1,1000):
@@ -32,8 +32,7 @@ for i in range(1,1000):
     thresh = cv2.threshold(blurred, 60, 255, cv2.THRESH_BINARY)[1]
 
 
-    cnts = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL,
-                            cv2.CHAIN_APPROX_SIMPLE)
+    cnts = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
 
     cnts = cnts[0] if imutils.is_cv2() else cnts[1]
     count=1
@@ -66,12 +65,14 @@ for i in range(1,1000):
         #cv2.imshow("Image", image)
         #imagen=image
         #img[0:100,0:490]=imagen
-        cv2.imshow("Image", img)
+        #cv2.imshow("Image", img)
         count = count+1
 
-    cv2.waitKey(0)
+    #v2.waitKey(0)
     cons = cons2
     i=i+1
+cv2.imshow("Image", img)
+cv2.waitKey(0)
 #[363, 614], [311, 855]]
 #python center_blob1.py --image prueba1.png
 

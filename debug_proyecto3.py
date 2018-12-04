@@ -1,7 +1,14 @@
+
+from sys import platform as sys_pf
+if sys_pf == 'darwin':
+    import matplotlib
+    matplotlib.use("TkAgg")import matplotlib
+    from matplotlib import pyplot as plt
+    from matplotlib import transforms
 from scipy.ndimage import rotate
 from scipy.misc import imread, imshow
 import numpy as np
-from matplotlib import pyplot as plt
+
 from scipy import interpolate
 import cv2
 import imutils
@@ -10,7 +17,7 @@ from functools import partial
 from pylab import *
 from random import *
 from sklearn.cluster import KMeans
-from matplotlib import transforms
+
 import scipy.ndimage.morphology as morp
 fuente = 'ex2.png'
 img = cv2.imread(fuente, cv2.IMREAD_COLOR)
@@ -20,7 +27,6 @@ division=13
 '''
 FUNCIONES
 '''
-
 
 def nombre_archivo(na):
         punto = na.find(".")
@@ -314,7 +320,7 @@ else:
 dim = (ancho, altura)
 resized = cv2.resize(imagen2, dim, interpolation=cv2.INTER_AREA)
 
-fig, ax = plt.subplots()
+
 plt.imshow(resized)
 l_x = axx[0]
 l_x = l_x.tolist()

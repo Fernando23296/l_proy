@@ -1,7 +1,12 @@
+
+import matplotlib.pyplot as plt
+
+from matplotlib import transforms
+
 from scipy.ndimage import rotate
 from scipy.misc import imread, imshow
 import numpy as np
-from matplotlib import pyplot as plt
+
 from scipy import interpolate
 import cv2
 import imutils
@@ -10,7 +15,7 @@ from functools import partial
 from pylab import *
 from random import *
 from sklearn.cluster import KMeans
-from matplotlib import transforms
+
 import scipy.ndimage.morphology as morp
 from skimage import feature
 fuente = 'ex2.png'
@@ -292,6 +297,9 @@ for i in range(0, (division+1)):
     lis_2.append(a)
 
 print("LISTA DE COORDENADAS.: ",lis_2)
+
+
+
 lis_3 = []
 
 lis_3 = rellenador(lis_2, division, ancho, altura)
@@ -331,7 +339,7 @@ plt.plot(l_x, l_y, 'ob')
 #plt.plot(axx[0, :], axx[1, :], 'ob')
 plt.show()
 
-
+'''
 #de aqui para abajo es todo girado
 y = axx[0]
 #print("_"*30)
@@ -398,5 +406,6 @@ plt.plot(a_2, b_2, 'or')
 the_plot = plt.plot(x_new2, y_new)
 
 
-plt.savefig('debug_proyecto333.png')
-
+plt.savefig('debug_proyecto3.png')
+plt.show()
+'''
