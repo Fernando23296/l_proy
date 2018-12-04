@@ -220,6 +220,7 @@ def img_plot(x_new2,y_new,file_name,fig,ax,a_2,b_2,aaa,bbb):
     plt.savefig(os.path.join(path, titulo_final))
     return titulo_final
 
+
 def img_finale(x_new2,y_new,file_name,fig,ax,a_2,b_2):
     ruta = 'flaskblog/static/'+file_name
     imagen2 = cv2.imread(ruta, cv2.IMREAD_COLOR)
@@ -249,10 +250,28 @@ def img_finale(x_new2,y_new,file_name,fig,ax,a_2,b_2):
     the_plot = plt.plot(x_new2, y_new)
 
     titulo= nombre_archivo(file_name)
-    titulo_final=titulo+'finale.png'
+    titulo_final=titulo+'doc_version.png'
     path = 'static/'
     plt.savefig(os.path.join(path, titulo_final))
     return titulo_final
+
+def plot_rotate0(imagen,ax,width,height):
+    ruta = 'static/'+imagen
+    imagen2 = cv2.imread(ruta, cv2.IMREAD_COLOR)
+    img2 = rotate(imagen2, -270)
+
+    dim = (width, height)
+    resized = cv2.resize(img2, dim, interpolation=cv2.INTER_AREA)
+  
+
+    titulo = nombre_archivo(imagen)
+    titulo_final = titulo+'_previous.png'
+    path = 'flaskblog/static/'
+    
+    status = cv2.imwrite(os.path.join(path, titulo_final), resized)
+
+    return
+
 def plot_rotate(imagen,ax,width,height):
     ruta = 'static/'+imagen
     imagen2 = cv2.imread(ruta, cv2.IMREAD_COLOR)

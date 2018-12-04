@@ -480,16 +480,18 @@ def upload():
     y_new = f(x_new2)
     y_new = y_new[::-1]
 
-
+    pre0=img_finale(x_new2,y_new,filename,fig,ax,a_2,b_2)
+    plot_rotate0(pre0,ax,width_original,height_original)
     img_plot(x_new2,y_new,filename,fig,ax,a_2,b_2,pi1,pi2)
     pre=img_finale(x_new2,y_new,filename,fig,ax,a_2,b_2)
     plot_rotate(pre,ax,width_original,height_original)
 
     extracto2= nombre_archivo(filename)
-    extracto21=extracto2+'finale'
-    complemento = '_gts.png'
-    titulo_final2 = extracto21+complemento
-    print(titulo_final2)
-    return render_template("complete.html", image_original=filename, image_name=titulo_final2, image_filter=primer_debug, image_points=segundo_debug)
+    complemento_eng = 'doc_version_gts.png'
+    engineer_version = extracto2+complemento_eng
+    complemento_doc = 'doc_version_previous.png'
+    doc_version = extracto2+complemento_doc
+    print(engineer_version)
+    return render_template("complete.html", image_original=filename, image_name=engineer_version, image_doc=doc_version, image_filter=primer_debug, image_points=segundo_debug,)
 
 
